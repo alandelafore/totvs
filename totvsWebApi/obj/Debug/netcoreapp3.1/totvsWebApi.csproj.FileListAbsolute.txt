@@ -6,7 +6,6 @@ C:\Users\abaral\source\repos\totvs\totvsWebApi\bin\Debug\netcoreapp3.1\totvsWebA
 C:\Users\abaral\source\repos\totvs\totvsWebApi\bin\Debug\netcoreapp3.1\totvsWebApi.runtimeconfig.dev.json
 C:\Users\abaral\source\repos\totvs\totvsWebApi\bin\Debug\netcoreapp3.1\totvsWebApi.dll
 C:\Users\abaral\source\repos\totvs\totvsWebApi\bin\Debug\netcoreapp3.1\totvsWebApi.pdb
-C:\Users\abaral\source\repos\totvs\totvsWebApi\obj\Debug\netcoreapp3.1\totvsWebApi.csprojAssemblyReference.cache
 C:\Users\abaral\source\repos\totvs\totvsWebApi\obj\Debug\netcoreapp3.1\totvsWebApi.AssemblyInfoInputs.cache
 C:\Users\abaral\source\repos\totvs\totvsWebApi\obj\Debug\netcoreapp3.1\totvsWebApi.AssemblyInfo.cs
 C:\Users\abaral\source\repos\totvs\totvsWebApi\obj\Debug\netcoreapp3.1\totvsWebApi.csproj.CoreCompileInputs.cache
