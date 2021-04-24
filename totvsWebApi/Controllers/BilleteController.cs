@@ -1,20 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using totvsWebApi.Clases;
 
 namespace totvsWebApi.Controllers
 {
 	[ApiController]
 	[Route("[controller]")]
 	public class BilleteController : ControllerBase
-    {
+	{
+		[HttpGet]
+		public IEnumerable<Registro> Get()
+		{
+			var response = ConsultaRegistros();
+			return response;
+		}
+
         [HttpPost]
         public string Post([FromBody]Entrada valor)
         {
             try
             {
+
 				int C100, C50, C20, C10, D50, D10, D05, D01;
 				C100 = 0;
 				C50 = 0;
@@ -83,16 +94,39 @@ namespace totvsWebApi.Controllers
 					salida += string.Format("{0} notas de R$0.01 ||", D01);
 
 				}
+				InsertRegistro(salida);
 				return salida;
 
 			}
             
-            catch (Exception)
+            catch (Exception ex)
             {
                 return "El dato ingresado es incorrecto";
             }
         }
-    }
+		public IEnumerable<Registro> ConsultaRegistros()
+        {
+			string connection = "Server=localhost\\SQLEXPRESS;Database=model;Trusted_Connection=True;";
+
+			using(var db = new SqlConnection(connection))
+            {
+				var sql = "select * from registro NOLOCK";
+				return db.Query<Registro>(sql);
+                
+            }
+		}
+		public void InsertRegistro(string regis)
+        {
+			string connection = "Server=localhost\\SQLEXPRESS;Database=model;Trusted_Connection=True;";
+
+			using (SqlConnection db = new SqlConnection(connection))
+            {
+
+				var sql = string.Format("insert into Registro values('{0}')", regis) ;
+				var lst = db.Execute(sql);
+            }
+		}
+	}
 	public class Entrada
 	{
 		public string Key { get; set; }
